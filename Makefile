@@ -1,8 +1,12 @@
-.PHONY: all
+.PHONY: all clean
 
-LDFLAGS=-lavformat -lavdevice
+CFLAGS=-g
+LDFLAGS=-lavformat -lavdevice -lavcodec -lavutil
 
 all: motion_capture
 
 motion_capture: motion_capture.c
-	gcc $^ $(LDFLAGS) -o $@
+	gcc $^ $(CFLAGS) $(LDFLAGS) -o $@
+
+clean:
+	rm -fr motion_capture
